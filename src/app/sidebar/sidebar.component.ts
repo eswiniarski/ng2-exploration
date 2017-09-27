@@ -1,0 +1,8 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'rb-sidebar',
+  templateUrl: 'sidebar.component.html'
+})
+export class SidebarComponent {
+}
