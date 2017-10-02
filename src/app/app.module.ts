@@ -10,6 +10,8 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 import { routing } from './app.routing';
 
+import { RecipeService } from './shared/services/recipe.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { routing } from './app.routing';
     Angular2FontawesomeModule,
     routing
   ],
-  providers: [],
+  providers: [
+      RecipeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
