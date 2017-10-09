@@ -16,13 +16,13 @@ export class AddRecipeComponent implements OnInit {
 
     ngOnInit() {
         this.addForm = new FormGroup({
-            'title': new FormControl(),
-            'content': new FormControl(),
+            'title': new FormControl('', [Validators.required]),
+            'content': new FormControl('', [Validators.required]),
             'recipeType': new FormControl('public'),
             'ingredients': new FormArray([
                 new FormGroup({
-                    'name': new FormControl('a'),
-                    'amount': new FormControl('b'),
+                    'name': new FormControl('Test', [Validators.required]),
+                    'amount': new FormControl(1, [Validators.required, Validators.pattern('\\d+')]),
                 }),
             ]),
         });
@@ -32,11 +32,11 @@ export class AddRecipeComponent implements OnInit {
         console.log(this.addForm);
     }
 
-    onAddIngredient(name: string, amount: string) {
+    onAddIngredient(name: string, amount: number) {
         (<FormArray>this.addForm.get('ingredients')).push(
             new FormGroup({
-                'name': new FormControl(name),
-                'amount': new FormControl(amount)
+                'name': new FormControl(name, [Validators.required]),
+                'amount': new FormControl(amount, [Validators.pattern('\\d+')])
             })
         );
     }
