@@ -1,10 +1,12 @@
 <div class="col-md-2 sidebar">
     <div class="row">
         <ul class="nav nav-pills nav-stacked">
-            <li routerLinkActive="active">
-                <a routerLink="/">All recipes</a>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a routerLink="">All recipes</a>
             </li>
-            <li><a href="#">Add recipe</a></li>
+            <li routerLinkActive="active">
+                <a routerLink="recipe/add">Add recipe</a>
+            </li>
             <li><a href="#">Shoping list</a></li>
         </ul>
     </div>

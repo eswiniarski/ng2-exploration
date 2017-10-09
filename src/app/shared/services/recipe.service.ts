@@ -10,7 +10,7 @@ export class RecipeService {
     }
 
     getRecipeById(id: number) {
-        return RECIPES[id];
+        return RECIPES[id-1];
     }
 
 }
