@@ -15,7 +15,7 @@
             <hr>
             <div class="form-group" formArrayName="ingredients" *ngFor="let ingredient of addForm.get('ingredients').controls; let i = index">
                 <div formGroupName="{{ i }}">
-                    <label class="col-sm-2 control-label">Ingridient #{{ i + 1 }}</label>
+                    <label class="col-sm-2 control-label">Ingredient #{{ i + 1 }}</label>
                     <div class="col-sm-3">
                         <input class="form-control" type="text" formControlName="name" />
                     </div>
@@ -32,15 +32,15 @@
             <div class="form-group">
                 <label for="newIngrdientName" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-2">
-                    <input id="newIngrdientName" class="form-control" type="text" #newIngridientName />
+                    <input id="newIngrdientName" class="form-control" type="text" #newIngredientName />
                 </div>
 
                 <label for="newIngrdientAmount" class="col-sm-1 control-label">Amount</label>
                 <div class="col-sm-2">
-                    <input class="form-control" id="newIngrdientAmount" type="text" #newIngridientAmount />
+                    <input class="form-control" id="newIngrdientAmount" type="text" #newIngredientAmount />
                 </div>
                 <div class="col-sm-1">
-                    <button class="btn btn-default" (click)="onAddIngredient(newIngridientName.value, newIngridientAmount.value)">Add ingridient</button>
+                    <button class="btn btn-default" (click)="onAddIngredient(newIngredientName.value, newIngredientAmount.value)">Add ingredient</button>
                 </div>
             </div>
 

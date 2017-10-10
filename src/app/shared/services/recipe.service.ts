@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { RECIPES } from '../mocks/recipes.mock';
+import { Recipe } from '../models/recipe.model';
 
 @Injectable()
 export class RecipeService {
@@ -11,6 +12,10 @@ export class RecipeService {
 
     getRecipeById(id: number) {
         return RECIPES[id-1];
+    }
+
+    addRecipe(recipe: Recipe) {
+        RECIPES.push(recipe);
     }
 
 }

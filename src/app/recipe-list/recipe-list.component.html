@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-md-3" *ngFor="let recipe of recipes">
+    <div class="col-md-3" *ngFor="let recipe of recipes; let i = index">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="actions pull-right">
                     <ul>
                         <li>
-                            <a [routerLink]="['recipe', recipe.id, 'show']"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a [routerLink]="['recipe', i + 1, 'show']"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
