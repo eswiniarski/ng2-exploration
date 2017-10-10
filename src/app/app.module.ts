@@ -14,6 +14,7 @@ import { routing } from './app.routing';
 import { RecipeService } from './shared/services/recipe.service';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeShowComponent } from './recipe-show/recipe-show.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RecipeShowComponent } from './recipe-show/recipe-show.component';
     RecipeListComponent,
     AddRecipeComponent,
     RecipeShowComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class RecipeShowComponent implements OnInit {
     protected currentRecipeId :number;
     protected recipe: Recipe;
 
-    constructor(protected recipeService: RecipeService, protected activatedRoute: ActivatedRoute) { }
+    constructor(protected recipeService: RecipeService, protected activatedRoute: ActivatedRoute, protected router: Router) { }
 
     ngOnInit() {
         this.routerParamSubscription = this.activatedRoute.params.subscribe(
@@ -24,6 +24,10 @@ export class RecipeShowComponent implements OnInit {
         );
 
         this.recipe = this.recipeService.getRecipeById(this.currentRecipeId);
+
+        if (this.recipe == null) {
+            this.router.navigate(['404']);
+        }
     }
 
     ngOnDestroy() {
