@@ -43,6 +43,8 @@ export class AddRecipeComponent implements OnInit {
 
         let newRecipe = new Recipe('Title', 'content', 'public', tmpIngredients);
         this.recipeService.addRecipe(newRecipe);
+
+        this.addForm.reset();
     }
 
     onAddIngredient(name: string, amount: number) {
