@@ -1,6 +1,26 @@
 <div class="panel panel-default">
-        <div class="panel-heading">{{ recipe.title }}</div>
-        <div class="panel-body">
+    <div class="panel-heading">{{ recipe.title }}</div>
+    <div class="panel-body">
+        <h3>Ingredients</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let recipeIngredient of recipe.ingredients">
+                    <td>{{ recipeIngredient.name }}</td>
+                    <td>{{ recipeIngredient.amount }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <h3>How to prepare</h3>
+        <p>
             {{ recipe.content }}
-        </div>
+        </p>
     </div>
+</div>
