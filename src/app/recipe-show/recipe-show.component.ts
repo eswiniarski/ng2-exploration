@@ -5,6 +5,7 @@ import { Subscription, Observable } from 'rxjs/Rx';
 
 import { Recipe } from '../shared/models/recipe.model';
 import { RecipeService } from '../shared/services/recipe.service';
+import { ShoppingListService } from '../shared/services/shopping-list.service';
 
 @Component({
     templateUrl: 'recipe-show.component.html',
@@ -15,7 +16,7 @@ export class RecipeShowComponent implements OnInit {
     protected currentRecipeId :number;
     protected recipe: Recipe;
 
-    constructor(protected recipeService: RecipeService, protected activatedRoute: ActivatedRoute, protected router: Router) { }
+    constructor(protected recipeService: RecipeService, protected activatedRoute: ActivatedRoute, protected router: Router, protected shoppingListService: ShoppingListService) { }
 
     ngOnInit() {
         this.routerParamSubscription = this.activatedRoute.params.subscribe(
@@ -32,5 +33,11 @@ export class RecipeShowComponent implements OnInit {
 
     ngOnDestroy() {
         this.routerParamSubscription.unsubscribe();
+    }
+
+    addToShoppingList() {
+        this.recipe.ingredients.forEach(ingredient => {
+            this.shoppingListService.addItem(ingredient);
+        });
     }
 }

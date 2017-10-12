@@ -12,9 +12,11 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { routing } from './app.routing';
 
 import { RecipeService } from './shared/services/recipe.service';
+import { ShoppingListService } from './shared/services/shopping-list.service';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeShowComponent } from './recipe-show/recipe-show.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AddRecipeComponent,
     RecipeShowComponent,
     NotFoundComponent,
+    ShoppingListComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     routing
   ],
   providers: [
-      RecipeService
+      RecipeService,
+      ShoppingListService
   ],
   bootstrap: [AppComponent]
 })

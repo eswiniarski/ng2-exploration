@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Shopping list</div>
+    <div class="panel-body">
+        <table *ngIf="items.length > 0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let item of items">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.amount }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div *ngIf="items.length == 0">No items found</div>
+    </div>
+</div>
