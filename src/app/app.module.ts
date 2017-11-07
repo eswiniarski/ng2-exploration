@@ -17,6 +17,9 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeShowComponent } from './recipe-show/recipe-show.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { DynamicComponentComponent } from './recipe-list/dynamic-component.component';
+import { DynamicComponentService } from './shared/services/dynamic-component.service';
+import { RemoveItemComponent } from './recipe-list/remove-item.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     RecipeShowComponent,
     NotFoundComponent,
     ShoppingListComponent,
+    DynamicComponentComponent,
+    RemoveItemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
   ],
   providers: [
       RecipeService,
-      ShoppingListService
+      ShoppingListService,
+      DynamicComponentService
   ],
   bootstrap: [AppComponent]
 })

@@ -11,7 +11,7 @@
                             <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a (click)="delete(i+1)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -20,3 +20,4 @@
         </div>
     </div>
 </div>
+<rb-dynamic-component [componentData]="componentData"></rb-dynamic-component>

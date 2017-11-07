@@ -18,4 +18,7 @@ export class RecipeService {
         RECIPES.push(recipe);
     }
 
+    deleteRecipeById(id: number) {
+        RECIPES.splice(id - 1, 1);
+    }
 }
