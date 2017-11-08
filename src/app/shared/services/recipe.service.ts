@@ -21,4 +21,8 @@ export class RecipeService {
     deleteRecipeById(id: number) {
         RECIPES.splice(id - 1, 1);
     }
+
+    editRecipe(recipe: Recipe) {
+        RECIPES[recipe.id] = recipe;
+    }
 }

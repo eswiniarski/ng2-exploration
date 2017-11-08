@@ -8,7 +8,7 @@
                             <a [routerLink]="['recipe', i + 1, 'show']"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a [routerLink]="['recipe', i + 1, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </li>
                         <li>
                             <a (click)="delete(i+1)"><i class="fa fa-trash" aria-hidden="true"></i></a>
