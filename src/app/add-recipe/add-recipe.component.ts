@@ -41,9 +41,8 @@ export class AddRecipeComponent implements OnInit {
             tmpIngredients.push(tmpIngredient);
         });
 
-        let newRecipe = new Recipe('Title', 'content', 'public', tmpIngredients);
+        let newRecipe = new Recipe(formValues.title, formValues.content, formValues.recipeType, tmpIngredients);
         this.recipeService.addRecipe(newRecipe);
-
         this.addForm.reset();
     }
 
