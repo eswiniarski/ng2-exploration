@@ -14,7 +14,9 @@ export class RecipeListComponent implements OnInit {
     constructor(protected recipeService: RecipeService) {}
 
     ngOnInit() {
-        this.recipes = this.recipeService.getRecipes();
+         this.recipeService.getRecipes().subscribe(
+             (data) => this.recipes = data
+         );
     }
 
     delete(recipeId: number) {

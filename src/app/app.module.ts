@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { InMemoryDataService }  from './shared/services/in-memory-data.service';
 
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
@@ -39,7 +43,9 @@ import { RemoveItemComponent } from './recipe-list/remove-item.component';
     FormsModule,
     ReactiveFormsModule,
     Angular2FontawesomeModule,
-    routing
+    routing,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [
       RecipeService,
