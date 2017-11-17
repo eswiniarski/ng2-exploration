@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Route } from '@angular/router';
 
 import { Recipe } from '../shared/models/recipe.model';
 import { RecipeService } from '../shared/services/recipe.service';
@@ -11,12 +12,17 @@ import { RemoveItemComponent } from './remove-item.component';
 export class RecipeListComponent implements OnInit {
     protected recipes: Array<Recipe>;
     protected componentData = null;
-    constructor(protected recipeService: RecipeService) {}
+    protected recipesLoaded = false;
+
+    constructor(protected recipeService: RecipeService) { }
 
     ngOnInit() {
-         this.recipeService.getRecipes().subscribe(
-             (data) => this.recipes = data
-         );
+        this.recipeService.getRecipes().subscribe(
+            (data) => {
+                this.recipes = data;
+                this.recipesLoaded = true;
+            }
+        );
     }
 
     delete(recipeId: number) {

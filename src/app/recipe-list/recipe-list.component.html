@@ -19,5 +19,10 @@
             </div>
         </div>
     </div>
+
+    <div [hidden]="recipesLoaded" class="col-md-12">
+        Loading...
+    </div>
+
 </div>
 <rb-dynamic-component [componentData]="componentData"></rb-dynamic-component>
