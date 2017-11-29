@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div *ngIf="recipe" class="panel panel-default">
     <div class="panel-heading">{{ recipe.title }}</div>
     <div class="panel-body">
         <h3>Ingredients <button class="btn btn-primary btn-sm" (click)="addToShoppingList()">Add to shoping list</button></h3>
@@ -23,4 +23,8 @@
             {{ recipe.content }}
         </p>
     </div>
+</div>
+
+<div *ngIf="!recipe" class="col-md-12">
+    Loading...
 </div>

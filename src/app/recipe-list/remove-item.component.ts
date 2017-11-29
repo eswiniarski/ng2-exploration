@@ -16,7 +16,7 @@ export class RemoveItemComponent implements OnInit {
     }
 
     deleteItem() {
-        this.recipeService.deleteRecipeById(this.recipeToDelete);
+        this.recipeService.delete(this.recipeToDelete);
         this.closeModal();
     }
 

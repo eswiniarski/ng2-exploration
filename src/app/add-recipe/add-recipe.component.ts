@@ -28,9 +28,17 @@ export class AddRecipeComponent implements OnInit {
         );
 
         if (this.currentRecipeId) {
-            this.currentRecipe = this.recipeService.getRecipeById(this.currentRecipeId);
+            this.recipeService.getRecipeById(this.currentRecipeId).subscribe(
+                (recipe: Recipe) => {
+                    this.currentRecipe = recipe;
+                },
+                (err: any) => {
+                    console.log('xxxdd');
+                }
+            );
         }
 
+        //TODO: do this after load recipe from server or pass recipe instat of just id
         this.addForm = new FormGroup({
             'title': new FormControl(this.currentRecipe ? this.currentRecipe.title : '', [Validators.required]),
             'content': new FormControl(this.currentRecipe ? this.currentRecipe.content : '', [Validators.required]),
@@ -73,6 +81,7 @@ export class AddRecipeComponent implements OnInit {
             this.currentRecipe.ingredients = tmpIngredients;
             this.recipeService.editRecipe(this.currentRecipe);
         } else {
+            console.log('dsf');
             let newRecipe = new Recipe(formValues.title, formValues.content, formValues.recipeType, tmpIngredients);
             this.recipeService.addRecipe(newRecipe);
         }

@@ -31,22 +31,31 @@ export class RecipeService {
     }
 
     getRecipeById(id: number) {
-        return RECIPES[id-1];
+        // return RECIPES[id-1];
+        let url = this.recipesUrl + '/' + id;
+
+        return this.http.get(url, this.headers)
+            .map((response: Response) => response.json());
     }
 
     addRecipe(recipe: Recipe) {
-        // RECIPES.push(recipe);
-
         return this.http.post(this.recipesUrl, JSON.stringify(recipe), this.headers)
             .map((response: Response) => response.json())
             .catch(this.formatErrors).subscribe();
     }
 
-    deleteRecipeById(id: number) {
-        RECIPES.splice(id - 1, 1);
+    editRecipe(recipe: Recipe) {
+        let url = this.recipesUrl + '/' + recipe.id;
+        return this.http.put(url, JSON.stringify(recipe), this.headers)
+            .map((response) => response.json())
+            .catch(this.formatErrors).subscribe();
     }
 
-    editRecipe(recipe: Recipe) {
-        RECIPES[recipe.id] = recipe;
+    delete(id: number) {
+        let url = this.recipesUrl + '/' + id;
+        console.log(url);
+        return this.http.delete(url, this.headers)
+            .map((response: Response) => response.json())
+            .catch(this.formatErrors).subscribe();
     }
 }

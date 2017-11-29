@@ -24,11 +24,16 @@ export class RecipeShowComponent implements OnInit {
             () => { console.log('Router parameter error'); }
         );
 
-        this.recipe = this.recipeService.getRecipeById(this.currentRecipeId);
-
-        if (this.recipe == null) {
-            this.router.navigate(['404']);
-        }
+        this.recipeService.getRecipeById(this.currentRecipeId).subscribe(
+            (recipe: Recipe) => {
+                this.recipe = recipe;
+            },
+            (error: any) => {
+                if (error.status == 404) {
+                    this.router.navigate(['404']);
+                }
+            }
+        );
     }
 
     ngOnDestroy() {

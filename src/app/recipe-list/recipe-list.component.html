@@ -5,13 +5,13 @@
                 <div class="actions pull-right">
                     <ul>
                         <li>
-                            <a [routerLink]="['recipe', i + 1, 'show']"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a [routerLink]="['recipe', recipe.id, 'show']"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a [routerLink]="['recipe', i + 1, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a [routerLink]="['recipe', recipe.id, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a (click)="delete(i+1)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a (click)="delete(recipe.id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -24,5 +24,8 @@
         Loading...
     </div>
 
+    <div *ngIf="recipesLoaded" [hidden]="recipes.length > 0" class="col-md-12">
+        No recipes to dispaly
+    </div>
 </div>
 <rb-dynamic-component [componentData]="componentData"></rb-dynamic-component>
