@@ -2,9 +2,7 @@
     <div class="panel-heading">Add recipe</div>
     <div class="panel-body">
 
-        <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="form-horizontal">
-
-
+        <form *ngIf="addForm" [formGroup]="addForm" (ngSubmit)="onSubmit()" class="form-horizontal">
             <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">Title</label>
                 <div class="col-sm-8">
@@ -65,11 +63,12 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button [disabled]="!addForm.valid" type="submit" class="btn btn-primary">Add</button>
+                    <button [disabled]="!addForm.valid" type="submit" class="btn btn-primary">{{newRecipe ? 'Add' : 'Edit'}}</button>
                 </div>
             </div>
-
         </form>
+
+        <p *ngIf="!addForm">Loading...</p>
 
     </div>
 </div>

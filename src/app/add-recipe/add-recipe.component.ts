@@ -18,27 +18,34 @@ export class AddRecipeComponent implements OnInit {
     currentRecipeId: number;
     currentRecipe: Recipe;
     routerParamSubscription: Subscription;
+    newRecipe = false;
 
     constructor(protected recipeService: RecipeService, protected activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
         this.routerParamSubscription = this.activatedRoute.params.subscribe(
             (param: any) => { this.currentRecipeId = param['id'];},
-            () => { console.log('Router parameter error'); }
+            (err: any) => { console.log('Router parameter error'); }
         );
 
         if (this.currentRecipeId) {
             this.recipeService.getRecipeById(this.currentRecipeId).subscribe(
                 (recipe: Recipe) => {
-                    this.currentRecipe = recipe;
+                    this.prepareForm(recipe);
                 },
                 (err: any) => {
-                    console.log('xxxdd');
+                    console.log('An error occurred');
                 }
             );
+        } else {
+            this.prepareForm(null);
         }
+    }
 
-        //TODO: do this after load recipe from server or pass recipe instat of just id
+    prepareForm(recipe: Recipe) {
+        this.currentRecipe = recipe;
+        this.newRecipe = this.currentRecipe ? false : true;
+
         this.addForm = new FormGroup({
             'title': new FormControl(this.currentRecipe ? this.currentRecipe.title : '', [Validators.required]),
             'content': new FormControl(this.currentRecipe ? this.currentRecipe.content : '', [Validators.required]),
@@ -81,7 +88,6 @@ export class AddRecipeComponent implements OnInit {
             this.currentRecipe.ingredients = tmpIngredients;
             this.recipeService.editRecipe(this.currentRecipe);
         } else {
-            console.log('dsf');
             let newRecipe = new Recipe(formValues.title, formValues.content, formValues.recipeType, tmpIngredients);
             this.recipeService.addRecipe(newRecipe);
         }
